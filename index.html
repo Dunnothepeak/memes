@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Meme Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fafafa;
+      font-family: 'Helvetica Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    #gallery {
+      max-width: 90%;
+      width: 400px;
+      height: auto;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div id="gallery">
+    <img id="meme" src="https://i.imgur.com/UYBDzKf.jpg" alt="meme" />
+    <div class="nav-buttons">
+      <button onclick="prevMeme()">← Prev</button>
+      <button onclick="nextMeme()">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    const memes = [
+      'https://i.imgur.com/UYBDzKf.jpg',
+      'https://i.imgur.com/bN8vyoV.jpg',
+      'https://i.imgur.com/jVLOP5T.jpg',
+      // add more meme links here
+    ];
+
+    let currentIndex = 0;
+    const memeImg = document.getElementById('meme');
+
+    function showMeme(index) {
+      memeImg.src = memes[index];
+    }
+
+    function nextMeme() {
+      if (currentIndex < memes.length - 1) {
+        currentIndex++;
+        showMeme(currentIndex);
+      }
+    }
+
+    function prevMeme() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showMeme(currentIndex);
+      }
+    }
+  </script>
+</body>
+</html>
